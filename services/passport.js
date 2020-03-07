@@ -6,6 +6,7 @@ const User = require('../models/User');
 
 const keys = require('../config/keys');
 
+
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
@@ -19,7 +20,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: keys.googleClientID,
   clientSecret: keys.googleClientSecret,
-  callbackURL: '/auth/google/callback',
+  callbackURL: keys.callbackURL,
   proxy: true
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({googleId: profile.id})
