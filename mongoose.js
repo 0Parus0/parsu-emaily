@@ -1,37 +1,33 @@
 const mongoose = require('mongoose');
 
-
-
 mongoose.connect('mongodb://localhost/parus-emaily', {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
 });
-
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected');
-})
+});
 
 const User = mongoose.model('users', {
   name: {
-    type: String
-  }, 
+    type: String,
+  },
   age: {
-    type: Number
-  }
+    type: Number,
+  },
 });
-
 
 const me = new User({
   name: 'Parus',
-  age: 39
+  age: 39,
 });
 
 me.save()
   .then(() => {
-    console.log(me)
+    console.log(me);
   })
-  .catch((error) => {
-    console.log('Error: ', error)
-  })
+  .catch(error => {
+    console.log('Error: ', error);
+  });
