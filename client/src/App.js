@@ -7,9 +7,8 @@ import * as actions from './actions';
 
 import Header from './components/Header.component';
 import LandingPage from './pages/LandingPage';
-
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import DashboardPage from './pages/DashboardPage';
+import SurveyNewPage from './pages/SurveyNewPage';
 
 class App extends Component {
   componentDidMount() {
@@ -20,16 +19,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Router>
-          <div>
-            <Header />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route exact path="/surveys/new" component={SurveyNew} />
-          </div>
-        </Router>
-      </div>
+      <Router>
+        <div className="container">
+          <Header />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/surveys" component={DashboardPage} />
+          <Route exact path="/surveys/new" component={SurveyNewPage} />
+        </div>
+      </Router>
     );
   }
 }

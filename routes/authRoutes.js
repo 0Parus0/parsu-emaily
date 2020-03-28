@@ -9,15 +9,12 @@ module.exports = app => {
     })
   );
 
-  app.get(
-    '/auth/google/callback',
-    passport.authenticate('google'),
-    (req, res) => {
-      if(process.env.NODE_ENV=== 'production'){
-        res.redirect('/surveys');
-      } else {
-        res.redirect(keys.redirectUrl);
-      }
+  app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+    if (process.env.NODE_ENV === 'production') {
+      res.redirect('/surveys');
+    } else {
+      res.redirect(keys.redirectUrl);
+    }
   });
 
   app.get('/api/logout', (req, res) => {
